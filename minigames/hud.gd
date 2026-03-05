@@ -19,11 +19,11 @@ func set_controls(t: String) -> void:
 
 func set_timer(seconds_left: float) -> void:
 	if is_instance_valid(timer_label):
-		timer_label.text = "Time: %d" % int(ceil(seconds_left))
+		timer_label.text = "Time Left Before Attack: %d" % int(ceil(seconds_left))
 
 func set_bugs(count: int) -> void:
 	if is_instance_valid(bugs_label):
-		bugs_label.text = "Bugs: %d" % count
+		bugs_label.text = "LadyBugs Caught: %d" % count
 
 func set_player_hp(norm_0_to_1: float) -> void:
 	if is_instance_valid(player_hp):

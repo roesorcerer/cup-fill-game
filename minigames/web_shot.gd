@@ -11,7 +11,10 @@ var velocity: Vector3 = Vector3.ZERO
 func _ready() -> void:
 	add_to_group("webs")
 	body_entered.connect(_on_body_entered)
-	get_tree().create_timer(life_sec).timeout.connect(queue_free)
+	get_tree().create_timer(life_sec).timeout.connect(func():
+		if is_instance_valid(self):
+			queue_free()
+	)
 
 func fire_at(target_pos: Vector3, speed: float) -> void:
 	var dir = (target_pos - global_position).normalized()

@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dll8n76x8v338" path="res://minigames/spider_boss.tscn" id="8_uwcxw"]
 [ext_resource type="PackedScene" uid="uid://c0y2mlknmpw4u" path="res://minigames/web_shot.tscn" id="9_bqohn"]
 [ext_resource type="Script" uid="uid://dyyy3nfo15g68" path="res://minigames/end_screen.gd" id="10_endsc"]
+[ext_resource type="FontFile" uid="uid://weytvq5jyoxa" path="res://assets/fonts/GAMER-Italic.otf" id="14_altjo"]
+[ext_resource type="FontFile" uid="uid://ct35aw48c7rgt" path="res://assets/fonts/LowresPixel-Regular.otf" id="15_mqdah"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b3llr"]
 size = Vector3(0.5, 5, 60)
@@ -44,91 +46,101 @@ albedo_texture = ExtResource("3_b3llr")
 refraction_enabled = true
 uv1_scale = Vector3(10, 10, 10)
 
-[sub_resource type="SystemFont" id="SystemFont_no3ur"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_qrq6y"]
-font = SubResource("SystemFont_no3ur")
+font = ExtResource("14_altjo")
 font_size = 46
 outline_size = 6
 outline_color = Color(1, 1, 0.38431373, 1)
 
-[sub_resource type="FontFile" id="FontFile_1ah5b"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/17/0/ascent = 0.0
-cache/0/17/0/descent = 0.0
-cache/0/17/0/underline_position = 0.0
-cache/0/17/0/underline_thickness = 0.0
-cache/0/17/0/scale = 1.0
-cache/0/18/0/ascent = 0.0
-cache/0/18/0/descent = 0.0
-cache/0/18/0/underline_position = 0.0
-cache/0/18/0/underline_thickness = 0.0
-cache/0/18/0/scale = 1.0
-cache/0/19/0/ascent = 0.0
-cache/0/19/0/descent = 0.0
-cache/0/19/0/underline_position = 0.0
-cache/0/19/0/underline_thickness = 0.0
-cache/0/19/0/scale = 1.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_g27wk"]
-font = SubResource("FontFile_1ah5b")
-font_size = 19
-font_color = Color(0.09803922, 1, 1, 1)
-outline_size = 2
+font = ExtResource("15_mqdah")
+font_size = 21
+font_color = Color(0.6969656, 0.7891868, 0.9654791, 1)
+outline_size = 3
 outline_color = Color(0.101240985, 0.101240985, 0.101240985, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.9019608)
 
-[sub_resource type="FontVariation" id="FontVariation_w8s1h"]
+[sub_resource type="Theme" id="Theme_0mmjs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqdah"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.09803922, 0.3882353, 0.23529412, 0.77254903)
+border_color = Color(0.026721498, 0.026721507, 0.026721468, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+shadow_color = Color(0.12483855, 0.23641166, 0.5610331, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjg3u"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.36887512, 0.26883444, 0.050840773, 0.6)
+border_color = Color(0.07799166, 0.013463041, 0.04272408, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+shadow_color = Color(0.74641204, 0.5528331, 0.116150714, 0.6)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_altjo"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.24523675, 0.5312763, 0.6646712, 0.8666667)
+border_color = Color(0.035346236, 0.03534625, 0.0353462, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.7529412, 0, 0, 0.6)
+shadow_size = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_rjo4a"]
 line_spacing = 5.0
-font = SubResource("FontVariation_w8s1h")
+font = ExtResource("15_mqdah")
 font_size = 20
-font_color = Color(0.7272038, 0.6210506, 0.26687682, 1)
+font_color = Color(0.3640979, 0.45634872, 0.2964534, 1)
 outline_size = 7
 
 [sub_resource type="LabelSettings" id="LabelSettings_bqohn"]
-
-[sub_resource type="SystemFont" id="SystemFont_bqohn"]
+font = ExtResource("15_mqdah")
+font_size = 18
+font_color = Color(1.92523e-07, 0.54983896, 0.54983884, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_no3ur"]
-font = SubResource("SystemFont_bqohn")
+font = ExtResource("15_mqdah")
 font_size = 17
-font_color = Color(0.29174128, 0.11628235, 0.106045045, 1)
+font_color = Color(0.6281529, 0.29829437, 0.2744625, 1)
 outline_size = 3
-outline_color = Color(1, 0.11372549, 1, 1)
+outline_color = Color(0.96092767, 0.4661138, 0.1990585, 1)
 shadow_size = 3
 
-[sub_resource type="FontFile" id="FontFile_no3ur"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/17/0/ascent = 0.0
-cache/0/17/0/descent = 0.0
-cache/0/17/0/underline_position = 0.0
-cache/0/17/0/underline_thickness = 0.0
-cache/0/17/0/scale = 1.0
-cache/0/18/0/ascent = 0.0
-cache/0/18/0/descent = 0.0
-cache/0/18/0/underline_position = 0.0
-cache/0/18/0/underline_thickness = 0.0
-cache/0/18/0/scale = 1.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_1ah5b"]
-font = SubResource("FontFile_no3ur")
-font_size = 18
-font_color = Color(0.7882353, 0.65882355, 1, 1)
-
-[sub_resource type="FontVariation" id="FontVariation_5xe7b"]
+font = ExtResource("15_mqdah")
+font_size = 20
+font_color = Color(0.32183984, 0.8267392, 0.7715218, 1)
+outline_size = 6
+outline_color = Color(0.096034355, 0.09677907, 0.0599014, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.9372549)
 
 [sub_resource type="LabelSettings" id="LabelSettings_w8s1h"]
 line_spacing = 5.0
-font = SubResource("FontVariation_5xe7b")
+font = ExtResource("15_mqdah")
 font_size = 20
 font_color = Color(0.0627451, 0.6509804, 0.007843138, 1)
 outline_size = 2
@@ -147,11 +159,9 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="SystemFont" id="SystemFont_rjo4a"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_altjo"]
 line_spacing = 5.0
-font = SubResource("SystemFont_rjo4a")
+font = ExtResource("15_mqdah")
 font_size = 20
 font_color = Color(1, 0.14509805, 0.09411765, 1)
 outline_size = 3
@@ -169,6 +179,20 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mmjs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.012935259, 0.12573463, 0.07873168, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+shadow_color = Color(0, 0.61960787, 0, 0.6)
+shadow_size = 3
 
 [node name="CupLevel" type="Node3D"]
 script = ExtResource("1_u0uxk")
@@ -242,14 +266,14 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999998, 0, 1.5, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraPivot"]
 transform = Transform3D(1.0000002, 0, 0, 0, 0.98480797, 0.1736482, 0, -0.17364822, 0.98480785, 0, 0, 0)
-spring_length = 4.5
+spring_length = 7.0
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraPivot/SpringArm3D"]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 current = true
 fov = 70.9
 size = 19.604
-far = 109.32
+far = 170.0
 
 [node name="CanvasLayer_UI" type="CanvasLayer" parent="."]
 
@@ -274,30 +298,34 @@ stretch_mode = 6
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer_UI/MainMenu"]
 layout_mode = 0
-offset_left = 455.0
-offset_top = 82.0
-offset_right = 711.0
-offset_bottom = 146.0
+offset_left = 798.0
+offset_top = 156.0
+offset_right = 1186.0
+offset_bottom = 220.0
 text = "Fill The Cup"
 label_settings = SubResource("LabelSettings_qrq6y")
 horizontal_alignment = 1
 
 [node name="SubLabel" type="Label" parent="CanvasLayer_UI/MainMenu"]
 layout_mode = 0
-offset_left = 137.0
-offset_top = 178.0
-offset_right = 997.0
-offset_bottom = 204.0
+offset_left = 509.0
+offset_top = 284.0
+offset_right = 1465.0
+offset_bottom = 312.0
 text = "Thank you Game Dev Club for the Idea! Inspired by WarioWare Fill the Cup Game. Repo Found at:"
 label_settings = SubResource("LabelSettings_g27wk")
 
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer_UI/MainMenu"]
 layout_mode = 0
-offset_left = 561.0
-offset_top = 226.0
-offset_right = 727.0
-offset_bottom = 266.0
+offset_left = 869.0
+offset_top = 353.0
+offset_right = 1118.0
+offset_bottom = 393.0
+theme_override_colors/font_color = Color(0.8040256, 0.82462966, 0.89156896, 1)
+theme_override_fonts/font = ExtResource("15_mqdah")
+theme_override_font_sizes/font_size = 24
 text = "Rowan Repo for Code"
+uri = "https://github.com/roesorcerer/cup-fill-game.git"
 
 [node name="MenuBox" type="VBoxContainer" parent="CanvasLayer_UI/MainMenu"]
 custom_minimum_size = Vector2(400, 240)
@@ -317,14 +345,29 @@ alignment = 1
 
 [node name="StartButton" type="Button" parent="CanvasLayer_UI/MainMenu/MenuBox"]
 layout_mode = 2
+theme = SubResource("Theme_0mmjs")
+theme_override_colors/font_color = Color(0.15029827, 0.9263602, 0.92615175, 1)
+theme_override_colors/font_hover_color = Color(0.9113487, 0.9710944, 0.89025664, 1)
+theme_override_colors/font_outline_color = Color(0.2172193, 0.153418, 0.07167422, 1)
+theme_override_fonts/font = ExtResource("15_mqdah")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_mqdah")
 text = "Start Game"
 
 [node name="InfoButton" type="Button" parent="CanvasLayer_UI/MainMenu/MenuBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.85210377, 0.9336921, 0.17365894, 1)
+theme_override_fonts/font = ExtResource("15_mqdah")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_cjg3u")
 text = "InfoButton"
 
 [node name="EndGame" type="Button" parent="CanvasLayer_UI/MainMenu/MenuBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.20784314, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("15_mqdah")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_altjo")
 text = "Quit Game"
 
 [node name="HUD" type="Control" parent="CanvasLayer_UI"]
@@ -336,18 +379,18 @@ script = ExtResource("6_5wywl")
 
 [node name="ObjectiveLabel" type="Label" parent="CanvasLayer_UI/HUD"]
 layout_mode = 0
-offset_left = 222.0
-offset_top = 479.0
-offset_right = 262.0
-offset_bottom = 585.0
+offset_left = 11.0
+offset_top = 220.0
+offset_right = 174.0
+offset_bottom = 255.0
 label_settings = SubResource("LabelSettings_rjo4a")
 
 [node name="ControlsLabel" type="Label" parent="CanvasLayer_UI/HUD"]
 layout_mode = 0
-offset_left = 412.0
-offset_top = 16.0
-offset_right = 600.0
-offset_bottom = 39.0
+offset_left = 880.0
+offset_top = 1007.0
+offset_right = 1087.0
+offset_bottom = 1062.0
 label_settings = SubResource("LabelSettings_bqohn")
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer_UI/HUD"]
@@ -362,10 +405,10 @@ horizontal_alignment = 1
 [node name="BugsLabel" type="Label" parent="CanvasLayer_UI/HUD"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 0
-offset_left = 321.0
-offset_top = 141.0
-offset_right = 521.0
-offset_bottom = 241.0
+offset_left = 1063.0
+offset_top = 10.0
+offset_right = 1263.0
+offset_bottom = 110.0
 label_settings = SubResource("LabelSettings_1ah5b")
 
 [node name="PlayerHPLabel" type="Label" parent="CanvasLayer_UI/HUD"]
@@ -459,6 +502,10 @@ horizontal_alignment = 1
 
 [node name="ReplayButton" type="Button" parent="CanvasLayer_UI/EndScreen/BoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.31816512, 0.72365767, 0.6159492, 1)
+theme_override_fonts/font = ExtResource("15_mqdah")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_0mmjs")
 text = "Play Again"
 
 [node name="MenuButton" type="Button" parent="CanvasLayer_UI/EndScreen/BoxContainer"]
@@ -471,6 +518,7 @@ text = "Main Menu"
 
 [node name="SpiderBoss" parent="." instance=ExtResource("8_uwcxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 5, 12)
+max_hp = 10
 web_scene = ExtResource("9_bqohn")
 
 [connection signal="pressed" from="CanvasLayer_UI/MainMenu/MenuBox/StartButton" to="." method="start_game"]

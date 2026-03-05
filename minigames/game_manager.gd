@@ -33,6 +33,7 @@ enum Phase { MENU, COLLECT, BOSS, WIN, GAME_OVER, INFO }
 
 var phase: Phase = Phase.MENU
 var bugs_ammo: int = 0
+var volume: int = -10
 
 var _ending: bool = false
 
@@ -60,6 +61,8 @@ func _ready() -> void:
 
 	_set_phase(Phase.MENU)
 	_play_music(music_menu)
+	
+
 
 func start_game() -> void:
 	_ending = false
@@ -147,11 +150,15 @@ func _on_boss_died() -> void:
 		return
 	_ending = true
 	_set_phase(Phase.WIN)
+	AudioServer.set_bus_volume_db(0,volume)
 	_play_music(music_win)
-	_play_sfx(sfx_win)
+	_play_sfx(sfx_win) #duplication needs to be removed
 	player.play_win_animation()
 	if is_instance_valid(ui_end):
 		ui_end.show_result(true)
+	#if return_to_menu:
+	#	music_win.stop
+
 
 func _play_sfx(stream: AudioStream) -> void:
 	if stream == null or sfx_player == null:
@@ -191,7 +198,7 @@ func _set_phase(p: Phase) -> void:
 			ui_hud.visible = true
 			ui_hud.set_info_mode(false)
 			ui_hud.set_objective("Collect bugs for 20 seconds!")
-			ui_hud.set_controls("Right click: Turn the Camera | E: Collect Bugs | Left Click: Throw Collected LadyBug Friends to Defeat Spider")
+			ui_hud.set_controls("Right click: Turn the Camera \n E: Collect Bugs \n Left Click: Throw Collected LadyBug Friends to Defeat Spider")
 			ui_end.visible = false
 			if is_instance_valid(boss):
 				boss.visible = false
@@ -208,8 +215,8 @@ func _set_phase(p: Phase) -> void:
 			ui_menu.visible = true
 			ui_hud.visible = true
 			ui_hud.set_info_mode(true)
-			ui_hud.set_objective("Hi, and thank you for checking out this game!")
-			ui_hud.set_controls("This is a broken lil game for the Game Dev Game Jam")
+			ui_hud.set_objective("Hi, I am Rowan and I made a silly\n little game for a game jam. \nThis is my first game completed in Godot, \nand I want to thank you for \ntaking the time to play it")
+			ui_hud.set_controls("Feel free to check out the repo or my research. \nThe repo has a Readme that will provide the inspo for this game and some links to rersources.")
 			ui_end.visible = false
 
 func end_game():
@@ -235,8 +242,11 @@ func _reset_state() -> void:
 	if is_instance_valid(boss):
 		boss.visible = false
 		boss.hp = boss.max_hp
+		boss.scale = Vector3.ONE
+		boss.rotation = Vector3.ZERO
 		boss._dying = false
 		boss._is_fighting = false
+		boss.set_physics_process(false)
 		boss.shoot_timer.stop()
 
 	for node in get_tree().get_nodes_in_group("webs") \

@@ -45,10 +45,10 @@ func show_result(did_win: bool, custom_title: String = "", custom_subtitle: Stri
 		subtitle.text = custom_subtitle
 	elif did_win:
 		title.text = "Congratulations!"
-		subtitle.text = "You defeated the spider."
+		subtitle.text = "You defeated the spider and saved the ladybugs."
 	else:
 		title.text = "Game Over"
-		subtitle.text = "The spider got you."
+		subtitle.text = "The spider got you. You did not save the ladybugs."
 
 	# Prep animation state.
 	_kill_tween()

@@ -17,6 +17,10 @@ https://www.mariowiki.com/Cup_Runneth_Over
 [X] Main Menu to give a place for the codebase and to start the game(also a thanks!)
 [X] Bugs spawn on the ground randomly(not on the walls)
 [X] Music Added
+[X] Spider death animation works - GPUParticles3d 
+[X] Player death animation - GPUParticles3d
+[] Stomp area is not needed anymore 
+[] Sound dulication issue - win needs to stop when player goes back to hud
 
 
 Tween: https://www.youtube.com/watch?v=3vLENcJWafU

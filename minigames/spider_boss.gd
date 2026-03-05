@@ -84,8 +84,8 @@ func _die() -> void:
 	t.tween_property(self, "scale", start_scale * 0.15, death_anim_sec).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	t.set_parallel(false)
 	await t.finished
+	visible = false
 	boss_died.emit()
-	queue_free()
 
 func get_web_target_point() -> Vector3:
 	return muzzle.global_position

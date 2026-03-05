@@ -37,7 +37,7 @@ func _spawn_wave() -> void:
 	var box := spawn_shape.shape as BoxShape3D
 	if box == null:
 		return
-
+#making sure we are away from the wall 
 	var extents := box.size * 0.5
 	var spawn_x := extents.x - wall_margin
 	var spawn_z := extents.z - wall_margin
