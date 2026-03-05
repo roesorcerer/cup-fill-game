@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://cjualcbqhl4y2"]
+
+[ext_resource type="Script" uid="uid://1uf8sqaquuol" path="res://minigames/player.gd" id="1_b52e3"]
+[ext_resource type="PackedScene" uid="uid://crc7j0il0vx07" path="res://assets/standing_torch_walk_left_cup.glb" id="1_wk3t5"]
+[ext_resource type="PackedScene" uid="uid://ctq0a74kaowyn" path="res://minigames/captured_bug.tscn" id="2_73144"]
+[ext_resource type="AudioStream" uid="uid://dpnedo4ydcskx" path="res://assets/sounds/solo-cup-single-sound.mp3" id="3_6mkmv"]
+[ext_resource type="PackedScene" uid="uid://ckhl2lpirme7w" path="res://minigames/bug_projectile.tscn" id="3_w0i2g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6mkmv"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b52e3"]
+height = 0.1
+radius = 0.45
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b52e3"]
+size = Vector3(0.5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6mkmv"]
+size = Vector3(0.7, 0.1, 0.7)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w0i2g"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.5
+scale_max = 1.5
+color = Color(1, 0.3, 0.3, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xglya"]
+radius = 0.03
+height = 0.08
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_win"]
+direction = Vector3(0, 1, 0)
+spread = 120.0
+initial_velocity_min = 4.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -4, 0)
+scale_min = 0.5
+scale_max = 1.5
+color = Color(0.2, 1, 0.3, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_win"]
+radius = 0.03
+height = 0.08
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_b52e3")
+captured_bug_scene = ExtResource("2_73144")
+bug_projectile_scene = ExtResource("3_w0i2g")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="CupPivot" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.9999694, 0.007818995, 0, -0.007818995, 0.9999694, 0, 0.9918157, 0)
+
+[node name="Cup" parent="Pivot/CupPivot" instance=ExtResource("1_wk3t5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24207938, 0)
+
+[node name="CupInterior" type="Area3D" parent="Pivot/CupPivot/Cup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.090471745, 0)
+collision_layer = 2
+
+[node name="Center" type="Marker3D" parent="Pivot/CupPivot/Cup/CupInterior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6217516, 0.004861621)
+
+[node name="InteriorShape" type="CollisionShape3D" parent="Pivot/CupPivot/Cup/CupInterior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9484087, 0)
+shape = SubResource("CapsuleShape3D_6mkmv")
+
+[node name="BugStorage" type="Node3D" parent="Pivot/CupPivot/Cup"]
+
+[node name="CollectArea" type="Area3D" parent="Pivot/CupPivot/Cup"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/CupPivot/Cup/CollectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1187651, 0)
+shape = SubResource("CylinderShape3D_b52e3")
+debug_color = Color(0.09803922, 0.1882353, 1, 0.9411765)
+
+[node name="CatchAudio3D" type="AudioStreamPlayer3D" parent="Pivot/CupPivot/Cup"]
+stream = ExtResource("3_6mkmv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.03737873, 1.1223509, 0)
+shape = SubResource("BoxShape3D_b52e3")
+
+[node name="StompArea" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StompArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5113043, 0)
+shape = SubResource("BoxShape3D_6mkmv")
+debug_color = Color(1.9769822, 5.0073175, 5.1592174, 0.8745098)
+
+[node name="DeathAudio3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="DeathParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.8
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_w0i2g")
+draw_pass_1 = SubResource("CapsuleMesh_xglya")
+
+[node name="WinParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.6
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_win")
+draw_pass_1 = SubResource("CapsuleMesh_win")

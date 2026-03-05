@@ -1,0 +1,480 @@
+[gd_scene load_steps=45 format=3 uid="uid://clni8hdbc3102"]
+
+[ext_resource type="Script" uid="uid://ccdmrlmvtur1r" path="res://minigames/bug_spawner.gd" id="1_ekojn"]
+[ext_resource type="PackedScene" uid="uid://cjualcbqhl4y2" path="res://minigames/player.tscn" id="1_fc202"]
+[ext_resource type="Script" uid="uid://dhbhe3h1hn1uq" path="res://minigames/game_manager.gd" id="1_u0uxk"]
+[ext_resource type="AudioStream" uid="uid://bfyv12aup2eo4" path="res://assets/sounds/game_over.mp3" id="2_1ah5b"]
+[ext_resource type="AudioStream" uid="uid://ciolwav36ep3v" path="res://assets/sounds/spider-attack.mp3" id="2_5xe7b"]
+[ext_resource type="AudioStream" uid="uid://b7vjbx674jeuh" path="res://assets/sounds/gamestart.mp3" id="2_no3ur"]
+[ext_resource type="PackedScene" uid="uid://buk3obm01vq3w" path="res://minigames/bug.tscn" id="2_w0ny3"]
+[ext_resource type="Texture2D" uid="uid://cwwnq823k3n6s" path="res://assets/groundTexture/Cobblestone-B.png" id="3_b3llr"]
+[ext_resource type="AudioStream" uid="uid://crbb8incufnyy" path="res://assets/sounds/game-win.mp3" id="3_w8s1h"]
+[ext_resource type="AudioStream" uid="uid://ca07ge4nom8ky" path="res://assets/sounds/menu-sound.mp3" id="5_w8s1h"]
+[ext_resource type="Script" uid="uid://p75h3r702h12" path="res://minigames/hud.gd" id="6_5wywl"]
+[ext_resource type="Texture2D" uid="uid://cgfp1ehgvv44n" path="res://assets/backgrounds/startScreen.jpg" id="6_bqohn"]
+[ext_resource type="AudioStream" uid="uid://duhmxbw1fsouc" path="res://assets/sounds/battle-music.mp3" id="6_rjo4a"]
+[ext_resource type="AudioStream" uid="uid://d08c5uex3dm4l" path="res://assets/sounds/game-first-phase-bug-collect.mp3" id="6_w8s1h"]
+[ext_resource type="PackedScene" uid="uid://dll8n76x8v338" path="res://minigames/spider_boss.tscn" id="8_uwcxw"]
+[ext_resource type="PackedScene" uid="uid://c0y2mlknmpw4u" path="res://minigames/web_shot.tscn" id="9_bqohn"]
+[ext_resource type="Script" uid="uid://dyyy3nfo15g68" path="res://minigames/end_screen.gd" id="10_endsc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b3llr"]
+size = Vector3(0.5, 5, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0uxk"]
+size = Vector3(0.5, 5, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wywl"]
+size = Vector3(60, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mrl8"]
+size = Vector3(60, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w0ny3"]
+size = Vector3(60, 3, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hmkvw"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fc202"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0uxk"]
+albedo_texture = ExtResource("3_b3llr")
+refraction_enabled = true
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="SystemFont" id="SystemFont_no3ur"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrq6y"]
+font = SubResource("SystemFont_no3ur")
+font_size = 46
+outline_size = 6
+outline_color = Color(1, 1, 0.38431373, 1)
+
+[sub_resource type="FontFile" id="FontFile_1ah5b"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_g27wk"]
+font = SubResource("FontFile_1ah5b")
+font_size = 19
+font_color = Color(0.09803922, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0.101240985, 0.101240985, 0.101240985, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_w8s1h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rjo4a"]
+line_spacing = 5.0
+font = SubResource("FontVariation_w8s1h")
+font_size = 20
+font_color = Color(0.7272038, 0.6210506, 0.26687682, 1)
+outline_size = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqohn"]
+
+[sub_resource type="SystemFont" id="SystemFont_bqohn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_no3ur"]
+font = SubResource("SystemFont_bqohn")
+font_size = 17
+font_color = Color(0.29174128, 0.11628235, 0.106045045, 1)
+outline_size = 3
+outline_color = Color(1, 0.11372549, 1, 1)
+shadow_size = 3
+
+[sub_resource type="FontFile" id="FontFile_no3ur"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ah5b"]
+font = SubResource("FontFile_no3ur")
+font_size = 18
+font_color = Color(0.7882353, 0.65882355, 1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_5xe7b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8s1h"]
+line_spacing = 5.0
+font = SubResource("FontVariation_5xe7b")
+font_size = 20
+font_color = Color(0.0627451, 0.6509804, 0.007843138, 1)
+outline_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_player_bg"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_player_fill"]
+bg_color = Color(0.2, 0.8, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="SystemFont" id="SystemFont_rjo4a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_altjo"]
+line_spacing = 5.0
+font = SubResource("SystemFont_rjo4a")
+font_size = 20
+font_color = Color(1, 0.14509805, 0.09411765, 1)
+outline_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boss_bg"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boss_fill"]
+bg_color = Color(0.9, 0.2, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="CupLevel" type="Node3D"]
+script = ExtResource("1_u0uxk")
+sfx_boss_spawn = ExtResource("2_5xe7b")
+sfx_win = ExtResource("3_w8s1h")
+sfx_lose = ExtResource("2_1ah5b")
+sfx_no_bugs = ExtResource("2_1ah5b")
+music_menu = ExtResource("5_w8s1h")
+music_game_bugs = ExtResource("6_w8s1h")
+music_boss = ExtResource("6_rjo4a")
+music_game_over = ExtResource("2_no3ur")
+music_win = ExtResource("3_w8s1h")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_no3ur")
+volume_db = -10.0
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall-L" type="StaticBody3D" parent="Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall-L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+shape = SubResource("BoxShape3D_b3llr")
+
+[node name="Wall-R" type="StaticBody3D" parent="Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall-R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+shape = SubResource("BoxShape3D_u0uxk")
+
+[node name="Wall-N" type="StaticBody3D" parent="Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall-N"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+shape = SubResource("BoxShape3D_5wywl")
+
+[node name="Wall-S" type="StaticBody3D" parent="Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall-S"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+shape = SubResource("BoxShape3D_0mrl8")
+
+[node name="SpawnArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea"]
+shape = SubResource("BoxShape3D_w0ny3")
+
+[node name="BugSpawner" type="Node3D" parent="."]
+script = ExtResource("1_ekojn")
+bug_scene = ExtResource("2_w0ny3")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_hmkvw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_fc202")
+surface_material_override/0 = SubResource("StandardMaterial3D_u0uxk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, -0.7071068, 0, 0.7071068, 0.7071068, 5, 20, 4)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_fc202")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CameraPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999998, 0, 1.5, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraPivot"]
+transform = Transform3D(1.0000002, 0, 0, 0, 0.98480797, 0.1736482, 0, -0.17364822, 0.98480785, 0, 0, 0)
+spring_length = 4.5
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot/SpringArm3D"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+current = true
+fov = 70.9
+size = 19.604
+far = 109.32
+
+[node name="CanvasLayer_UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Control" parent="CanvasLayer_UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="CanvasLayer_UI/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_bqohn")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer_UI/MainMenu"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 82.0
+offset_right = 711.0
+offset_bottom = 146.0
+text = "Fill The Cup"
+label_settings = SubResource("LabelSettings_qrq6y")
+horizontal_alignment = 1
+
+[node name="SubLabel" type="Label" parent="CanvasLayer_UI/MainMenu"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 178.0
+offset_right = 997.0
+offset_bottom = 204.0
+text = "Thank you Game Dev Club for the Idea! Inspired by WarioWare Fill the Cup Game. Repo Found at:"
+label_settings = SubResource("LabelSettings_g27wk")
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer_UI/MainMenu"]
+layout_mode = 0
+offset_left = 561.0
+offset_top = 226.0
+offset_right = 727.0
+offset_bottom = 266.0
+text = "Rowan Repo for Code"
+
+[node name="MenuBox" type="VBoxContainer" parent="CanvasLayer_UI/MainMenu"]
+custom_minimum_size = Vector2(400, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer_UI/MainMenu/MenuBox"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="InfoButton" type="Button" parent="CanvasLayer_UI/MainMenu/MenuBox"]
+layout_mode = 2
+text = "InfoButton"
+
+[node name="EndGame" type="Button" parent="CanvasLayer_UI/MainMenu/MenuBox"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="HUD" type="Control" parent="CanvasLayer_UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_5wywl")
+
+[node name="ObjectiveLabel" type="Label" parent="CanvasLayer_UI/HUD"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 479.0
+offset_right = 262.0
+offset_bottom = 585.0
+label_settings = SubResource("LabelSettings_rjo4a")
+
+[node name="ControlsLabel" type="Label" parent="CanvasLayer_UI/HUD"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 39.0
+label_settings = SubResource("LabelSettings_bqohn")
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer_UI/HUD"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 114.0
+offset_right = 60.0
+offset_bottom = 138.0
+label_settings = SubResource("LabelSettings_no3ur")
+horizontal_alignment = 1
+
+[node name="BugsLabel" type="Label" parent="CanvasLayer_UI/HUD"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 321.0
+offset_top = 141.0
+offset_right = 521.0
+offset_bottom = 241.0
+label_settings = SubResource("LabelSettings_1ah5b")
+
+[node name="PlayerHPLabel" type="Label" parent="CanvasLayer_UI/HUD"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 8.0
+offset_right = 162.0
+offset_bottom = 36.0
+text = "Your HP:"
+label_settings = SubResource("LabelSettings_w8s1h")
+horizontal_alignment = 1
+
+[node name="PlayerHP" type="ProgressBar" parent="CanvasLayer_UI/HUD"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 0
+offset_left = 182.0
+offset_top = 12.0
+offset_right = 382.0
+offset_bottom = 42.0
+theme_override_styles/background = SubResource("StyleBoxFlat_player_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_player_fill")
+show_percentage = false
+
+[node name="BossHPLabel" type="Label" parent="CanvasLayer_UI/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 770.0
+offset_top = 5.0
+offset_right = 894.0
+offset_bottom = 33.0
+text = "Spider HP"
+label_settings = SubResource("LabelSettings_altjo")
+horizontal_alignment = 1
+
+[node name="BossHP" type="ProgressBar" parent="CanvasLayer_UI/HUD"]
+visible = false
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 0
+offset_left = 897.0
+offset_top = 6.0
+offset_right = 1097.0
+offset_bottom = 36.0
+theme_override_styles/background = SubResource("StyleBoxFlat_boss_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_boss_fill")
+show_percentage = false
+
+[node name="EndScreen" type="Control" parent="CanvasLayer_UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_endsc")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer_UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="BoxContainer" type="VBoxContainer" parent="CanvasLayer_UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="EndMessage" type="Label" parent="CanvasLayer_UI/EndScreen/BoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_qrq6y")
+horizontal_alignment = 1
+
+[node name="EndSubMessage" type="Label" parent="CanvasLayer_UI/EndScreen/BoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_g27wk")
+horizontal_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="CanvasLayer_UI/EndScreen/BoxContainer"]
+layout_mode = 2
+text = "Play Again"
+
+[node name="MenuButton" type="Button" parent="CanvasLayer_UI/EndScreen/BoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[node name="CollectTimer" type="Timer" parent="."]
+
+[node name="SpiderBoss" parent="." instance=ExtResource("8_uwcxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 5, 12)
+web_scene = ExtResource("9_bqohn")
+
+[connection signal="pressed" from="CanvasLayer_UI/MainMenu/MenuBox/StartButton" to="." method="start_game"]
+[connection signal="pressed" from="CanvasLayer_UI/MainMenu/MenuBox/InfoButton" to="." method="info_button"]
+[connection signal="pressed" from="CanvasLayer_UI/MainMenu/MenuBox/EndGame" to="." method="end_game"]
+[connection signal="pressed" from="CanvasLayer_UI/EndScreen/BoxContainer/ReplayButton" to="." method="replay_game"]
+[connection signal="pressed" from="CanvasLayer_UI/EndScreen/BoxContainer/MenuButton" to="." method="return_to_menu"]

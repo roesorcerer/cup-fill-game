@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dll8n76x8v338"]
+
+[ext_resource type="PackedScene" uid="uid://boi7ngw0h3nct" path="res://assets/spider_boss.glb" id="1_b68v5"]
+[ext_resource type="Script" uid="uid://dgqix80qtacu4" path="res://minigames/spider_boss.gd" id="1_v23km"]
+[ext_resource type="Script" uid="uid://cxu8i56fxwbx" path="res://minigames/hurt_box.gd" id="2_wo3yl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v23km"]
+radius = 2.773
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v23km"]
+size = Vector3(1, 0.8, 1.3)
+
+[node name="SpiderBoss" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_v23km")
+
+[node name="HurtBox" type="StaticBody3D" parent="."]
+collision_layer = 8
+script = ExtResource("2_wo3yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 5)
+shape = SubResource("SphereShape3D_v23km")
+
+[node name="spider_boss" parent="." instance=ExtResource("1_b68v5")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spider_boss"]
+layers = 4
+
+[node name="WebShootTimer" type="Timer" parent="."]
+
+[node name="Muzzle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_v23km")

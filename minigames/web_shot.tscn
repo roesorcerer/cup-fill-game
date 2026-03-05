@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0y2mlknmpw4u"]
+
+[ext_resource type="Script" uid="uid://bdktbvbvehvpy" path="res://minigames/web_shot.gd" id="1_m41qi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8jgof"]
+radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m41qi"]
+albedo_color = Color(0.61276716, 0.48822415, 0.27089256, 0.61960787)
+roughness = 0.3
+emission_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_8jgof"]
+material = SubResource("StandardMaterial3D_m41qi")
+radius = 0.15
+height = 0.3
+radial_segments = 32
+
+[node name="WebShot" type="Area3D"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_m41qi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8jgof")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+layers = 8
+mesh = SubResource("SphereMesh_8jgof")

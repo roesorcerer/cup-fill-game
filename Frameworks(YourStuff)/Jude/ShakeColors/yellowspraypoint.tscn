@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://byrf3lt5e1l7b"]
-
-[ext_resource type="Texture2D" uid="uid://dac0q2anqj3ov" path="res://Frameworks(YourStuff)/Jude/ShakeColors/spraycircleyellow.png" id="1_j48jb"]
-
-[node name="Node3D" type="Decal" unique_id=736424623]
-transform = Transform3D(0.08866364, 0, 0, 0, 0.08866364, 0, 0, 0, 0.08866364, 0, 0, 0)
-texture_albedo = ExtResource("1_j48jb")

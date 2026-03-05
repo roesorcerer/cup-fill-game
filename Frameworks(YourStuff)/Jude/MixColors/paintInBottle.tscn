@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://ivbhlrwj2llc"]
-
-[node name="Paint" type="ColorRect" unique_id=950086161]
-size_flags_vertical = 3

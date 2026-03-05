@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk2mnydhxmnpr"]
+
+[ext_resource type="PackedScene" uid="uid://chesjyg4a51e8" path="res://assets/ladybug_shoot.glb" id="1_e7hvx"]
+
+[node name="BugBullet" type="Node3D"]
+
+[node name="bug_bullet" parent="." instance=ExtResource("1_e7hvx")]

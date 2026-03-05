@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctq0a74kaowyn"]
+
+[ext_resource type="PackedScene" uid="uid://csa3r0p77ecl7" path="res://assets/ladybug_cup_capture.glb" id="1_qotlt"]
+
+[node name="CapturedBug" type="Node3D"]
+
+[node name="ladybug_cup_capture" parent="." instance=ExtResource("1_qotlt")]

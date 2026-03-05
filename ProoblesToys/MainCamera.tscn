@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b2ualapjj7bh"]
-
-[ext_resource type="Script" uid="uid://c1ab66kn1lwhu" path="res://ProoblesToys/camera_shake.gd" id="1_xnx34"]
-
-[node name="Camera2D" type="Camera2D" unique_id=1356177230]
-script = ExtResource("1_xnx34")
